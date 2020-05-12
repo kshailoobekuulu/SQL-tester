@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+body{
+	font-family: 'Raleway', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+header{
+	border-bottom: 1px solid black;
+	position: fixed;
+	background-color: white;
+	padding: 10px;
+	width: 100%;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.clearfix{
+	clear: both;
+}
+.site_name{
+	width: 250px;
+	margin: auto;
+	padding: 10px 5px
+}
+.logo_image{
+	height: 50px;
+}
+.wrapper{
+	max-width: 1200px;
+	margin: auto;
+	padding: 10px;
+}
+.logo{
+	float: left;
+	padding: 5px 0 0 0;
+}
+.navigation-wrapper{
+	float: right;
+	text-align: right;
+}
+.navigation{
+	display: inline-block;
+}
+.nav-item{
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.category{
+	display: none;
+}
+.category-item{
+	list-style-type: none;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+}
+.nav-link:hover{
+	color: rgba(0,0,0,0.7);
+}
+ .nested-nav:hover .category{
+	 display: block;
+	 width: 100px;
+	 position: absolute;
+	 border: 1px solid rgba(0,0,0,0.1);
+	 background-color: white;
+	 border-radius: 5px;
+	 padding:10px 10px;
+	 margin-top: 5px;
+ }
+
+ .list{
+	 padding: 20px;
+	 margin: 5px;
+	 border: 1px solid;
+	 border-color: rgba(0,0,0,0.1);
+	 border-radius: 5px;
+ }
+ 
+ .submit-button{
+	 cursor: pointer;
+	 border: none;
+	 color: white;
+	 font-weight: bolder;
+	 text-transform: uppercase;
+	 background-color: green;
+	 padding: 10px 30px;
+	 border-radius: 10px;
+ }
+ .submit-button:hover{
+	 background-color: rgb(25, 105, 41);
+ }
+ .code-input{
+	padding: 10px;
+	border-radius: 5px;
+ }

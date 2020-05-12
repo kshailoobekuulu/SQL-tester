@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="wrapper">
+    <div class="list">
+        <p>
+            {{ problem.description }}
+        </p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="text-center">
+                <textarea class="code-input" name="code" placeholder="Your code here" id="" cols="100" rows="10"></textarea>
+            </div>
+            <div class="text-center">
+                <input type="submit" class = 'submit-button' value="Submit">
+            </div>
+        </form>
+        {% if checked %}
+        <div class="list">
+            {% if error_message %}
+                {{error_message}}
+            {% elif is_correct%}
+                <p>Status: <span style = 'color:green'>Passed</span></p>
+            {% elif not is_correct%}
+            <p>Status: <span style = 'color:red'>Failed</span></p
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

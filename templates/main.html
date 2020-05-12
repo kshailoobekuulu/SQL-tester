@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="wrapper">
+        {% for problem in problems %}
+            <div class="list">
+                <a href="{% url 'test' problem.id %}">{{ problem.description }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

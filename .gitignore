@@ -1,0 +1,11 @@
+Pipfile
+problems/migrations/
+.idea/
+.vscode/
+media/
+Pipfile
+Pipfile.lock
+Procfile
+db.sqlite3
+sqltester/__pycache__
+problems/__pycache__
