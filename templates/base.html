@@ -11,25 +11,42 @@
 	<header>
 		<div class="wrapper">
 			<div class="logo">
-				<a href="{% url 'problem_list' %}"><img class = "logo_image" src="{% static 'images/Manas_logo.png' %}" alt="Manas Logo"></a>
+				<a href="{% url 'problems_by_category' 'all' %}">
+                    <img class = "logo_image" src="{% static 'images/Manas_logo.png' %}" alt="Manas Logo">
+                </a>
 			</div>
 			<div class="navigation-wrapper">
 				<ul class = "navigation">
-					<li class = "nav-item"><a class = "nav-link" href="{% url 'problem_list' %}">All Problems</a></li>
+					<li class = "nav-item"><a class = "nav-link" href="{% url 'problems_by_category' 'all' %}">All Problems</a></li>
 					<li class="nav-item nested-nav">
 						<a href="" >Category</a>
 						<ul class="category">
-							<li class='category-item'><a class = "nav-link" href="">Beginner</a></li>
-							<li class='category-item'><a href="" class="nav-link">Amateur</a></li>
+                            {% for category in categories %}
+							<li class='category-item'>
+                                <a class = "nav-link" href="{% url 'problems_by_category' category.category_name %}">
+                                    {{ category.category_name }}
+                                </a>
+                            </li>
+                            {% endfor %}
 						</ul>
 					</li>
-					<li class = "nav-item"><a class = "nav-link" href="">Soved Problems</a></li>
-					<li class = "nav-item"><a class = "nav-link" href="">Sign in</a></li>
+					{% if user.is_authenticated %}
+                        <li class = "nav-item">
+                            <a class = "nav-link" href="{% url 'solved_problems' %}">Solved Problems</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                    {% endif %}
 				</ul>
-			</nav>
-		</div>
-		<h1 class = "site_name">SQL Tester</h1>
-		<div class="clearfix"></div>
+		    </div>
+            <h1 class = "site_name">SQL Tester</h1>
+            <div class="clearfix"></div>
+        </div>
 	</header>
 	<div style="height: 100px"></div>
 	{% block content %}

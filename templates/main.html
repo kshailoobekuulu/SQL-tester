@@ -2,11 +2,32 @@
 {% block content %}
 <section>
     <div class="wrapper">
-        {% for problem in problems %}
-            <div class="list">
-                <a href="{% url 'test' problem.id %}">{{ problem.description }}</a>
-            </div>
-        {% endfor %}
+        {% if problems %}
+            {% for problem in problems %}
+                <div class="list">
+                    <a href="{% url 'test' problem.id %}">{{ problem.id }}. {{ problem.description }}</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class = "text-center">No problems found</p>
+        {% endif %}
+        <div class="text-center">
+            <span class="step-links">
+                {% if problems.has_previous %}
+                    <a class="nav-link" href="?page=1">&laquo; first</a>
+                    <a class="nav-link" href="?page={{ problems.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ problems.number }} of {{ problems.paginator.num_pages }}.
+                </span>
+
+                {% if problems.has_next %}
+                    <a class="nav-link" href="?page={{ problems.next_page_number }}">next</a>
+                    <a class="nav-link" href="?page={{ problems.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </section>
 {% endblock content %}

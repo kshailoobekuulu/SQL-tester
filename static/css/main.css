@@ -65,7 +65,6 @@ a{
 }
  .nested-nav:hover .category{
 	 display: block;
-	 width: 100px;
 	 position: absolute;
 	 border: 1px solid rgba(0,0,0,0.1);
 	 background-color: white;
@@ -77,8 +76,7 @@ a{
  .list{
 	 padding: 20px;
 	 margin: 5px;
-	 border: 1px solid;
-	 border-color: rgba(0,0,0,0.1);
+	 border: 1px solid rgba(0,0,0,0.1);
 	 border-radius: 5px;
  }
  
@@ -99,3 +97,19 @@ a{
 	padding: 10px;
 	border-radius: 5px;
  }
+
+ .form-wrapper{
+	 width: 300px;
+	 margin: 20px auto;
+	 padding: 30px;
+	 text-align: center;
+	 border: 1px solid rgba(0,0,0,0.1);
+	 border-radius: 5px;
+}
+
+.user-input{
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-size: 15px;
+}
