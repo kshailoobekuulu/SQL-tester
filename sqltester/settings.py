@@ -28,7 +28,7 @@ SECRET_KEY = 'fssu=%^+b81u80im2znc063s+6)b*qp4+cmd*$zy()mzq7s))6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

@@ -18,11 +18,11 @@ class Problem(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.description
+        return str(self.id) + ". " + self.description
 
 
 class UserSolvedProblems(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="solved_problems")
     problem = models.ForeignKey(Problem, related_name='solved_problems', on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -30,4 +30,4 @@ class UserSolvedProblems(models.Model):
         unique_together = ("user", "problem")
 
     def __str__(self):
-        return self.user.username + self.problem.id
+        return self.user.username + " ------> " + str(self.problem.id)

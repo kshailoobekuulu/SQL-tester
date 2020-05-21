@@ -1,27 +1,29 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from django.db import connections, IntegrityError
 from .models import Problem, UserSolvedProblems, Category
-from django.views import generic
 
 # Create your views here.
 
 
-def get_queryset(database_alias, solution):
+def index(request):
+    return redirect('problems_by_category', 'all')
+
+
+def get_queryset(database_alias, solution):  # function for evaluating queries
     with connections[f'{database_alias}'].cursor() as cursor:
         try:
             cursor.execute(f'{solution}')
             queryset = []
             for row in cursor:
                 queryset.append(row)
-            return queryset
+            return queryset  # if query works as expected then return result
         except Exception as e:
             s = e.__str__()
             error_code = int(s[1:5])
-            if error_code == 1064:
+            if error_code == 1064:  # if there is error in syntax then return a message
                 return s[6:-1]
-            elif error_code == 1142:
+            elif error_code == 1142:  # if there is SQL injection return a message
                 return "Only retriev queries allowed!"
             
 
@@ -56,10 +58,12 @@ def test_view(request, pk):
 
 def problems_by_category_view(request, category):
     try:
-        category = Category.objects.get(category_name=category)
-        problem_list = category.problems.order_by('-pub_date')
+        category_obj = Category.objects.get(category_name=category)  # get category provided in url
+        problem_list = category_obj.problems.order_by('-pub_date')  # get all problems related to the category
+        category_name = category.title()
     except Category.DoesNotExist:
-        problem_list = Problem.objects.order_by('-pub_date')
+        problem_list = Problem.objects.order_by('-pub_date')  # if requested category does not exist return all problems
+        category_name = "All"
 
     paginator = Paginator(problem_list, 10)  # Show 10 contacts per page.
     page_number = request.GET.get('page')
@@ -67,6 +71,7 @@ def problems_by_category_view(request, category):
 
     context = {
         'problems': queryset,
+        'category_name': category_name,
     }
     return render(request, 'main.html', context)
 

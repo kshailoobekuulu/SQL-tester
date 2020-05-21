@@ -1,21 +1,25 @@
 <!-- templates/registration/login.html -->
 {% extends 'base.html' %}
+{% block title %}
+    Log In
+{% endblock title %}
 {% block content %}
 <div class="wrapper">
     <div class="form-wrapper">
         <h2>Log In</h2>
         <form method="post">
-        {% csrf_token %}
-       <p>
-            <input class = "user-input" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
-               maxlength="150" required="" id="id_username" placeholder="username">
-       </p>
-        <p>
-            <input class = "user-input" type="password" name="password" autocomplete="current-password" required=""
-               id="id_password" placeholder="password">
-        </p>
-        <p><button type="submit" class="submit-button">Log In</button></p>
+            {% csrf_token %}
+            <p>
+                <input class = "user-input" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
+                   maxlength="150" required="" id="id_username" placeholder="username">
+            </p>
+            <p>
+                <input class = "user-input" type="password" name="password" autocomplete="current-password" required=""
+                   id="id_password" placeholder="password">
+            </p>
+            <p><button type="submit" class="submit-button">Log In</button></p>
         </form>
     </div>
+    <p class="text-center">Don't have an accout? <a class="link-highlighter" href="{% url 'signup' %}">Sign Up</a></p>
 </div>
 {% endblock content %}

@@ -1,5 +1,6 @@
 Pipfile
 problems/migrations/
+users/migrations/
 .idea/
 .vscode/
 media/
@@ -9,3 +10,4 @@ Procfile
 db.sqlite3
 sqltester/__pycache__
 problems/__pycache__
+users/__pycache__
