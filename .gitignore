@@ -4,7 +4,6 @@ users/migrations/
 .idea/
 .vscode/
 media/
-Pipfile
 Pipfile.lock
 Procfile
 db.sqlite3
